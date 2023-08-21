@@ -1,0 +1,1 @@
+export { DepositsList } from './DepositsList';

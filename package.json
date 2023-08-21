@@ -1,0 +1,101 @@
+{
+  "name": "lixtec",
+  "version": "0.0.0",
+  "private": true,
+  "dependencies": {
+    "@date-io/date-fns": "1.x",
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
+    "@ericblade/quagga2": "^1.4.2",
+    "@material-ui/core": "^4.11.4",
+    "@material-ui/icons": "^4.11.2",
+    "@material-ui/lab": "^4.0.0-alpha.57",
+    "@material-ui/pickers": "^3.3.10",
+    "@mui/icons-material": "^5.14.1",
+    "@mui/material": "^5.14.1",
+    "@testing-library/jest-dom": "^5.11.9",
+    "@testing-library/react": "^11.2.3",
+    "@testing-library/user-event": "^12.6.0",
+    "bcryptjs": "^2.4.3",
+    "classnames": "^2.2.6",
+    "colors": "^1.4.0",
+    "cpf-cnpj-validator": "^1.0.3",
+    "crypto-js": "^4.0.0",
+    "date-fns": "^2.22.1",
+    "dotenv": "^16.0.1",
+    "jose": "^4.1.0",
+    "qrcode.react": "^1.0.1",
+    "react": "^17.0.1",
+    "react-boleto-reader": "^1.0.1",
+    "react-cookie": "^4.1.1",
+    "react-dom": "^17.0.1",
+    "react-icons": "^4.2.0",
+    "react-number-format": "^4.4.4",
+    "react-otp-input": "^2.3.0",
+    "react-qr-reader": "^2.2.1",
+    "react-redux": "^7.2.2",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "4.0.1",
+    "react-text-mask": "^5.4.3",
+    "redux": "^4.0.5",
+    "redux-thunk": "^2.3.0",
+    "sass": "^1.32.11",
+    "scandit-sdk": "^5.12.0",
+    "scandit-sdk-react": "^4.0.2",
+    "ts-clipboard": "^1.0.17",
+    "typescript": "^4.1.5",
+    "uuid": "^8.3.2",
+    "web-vitals": "^0.2.4"
+  },
+  "scripts": {
+    "start": "react-scripts --openssl-legacy-provider start",
+    "build": "yarn eslint src && react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest",
+      "prettier"
+    ],
+    "rules": {
+      "no-var": "error",
+      "prefer-arrow-callback": "error"
+    },
+    "ignorePatterns": [
+      "src/*.ts",
+      "src/*.tsx"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@types/axios": "^0.14.0",
+    "@types/bcryptjs": "^2.4.2",
+    "@types/crypto-js": "^4.0.1",
+    "@types/jest": "^26.0.20",
+    "@types/node": "^14.14.33",
+    "@types/qrcode.react": "^1.0.1",
+    "@types/react": "^17.0.3",
+    "@types/react-dom": "^17.0.2",
+    "@types/react-qr-reader": "^2.1.4",
+    "@types/react-redux": "^7.1.16",
+    "@types/react-router-dom": "^5.1.7",
+    "@types/react-text-mask": "^5.4.6",
+    "@types/uuid": "^8.3.1",
+    "eslint-config-prettier": "^8.3.0",
+    "prettier": "^2.5.1",
+    "redux-devtools-extension": "^2.13.9"
+  }
+}

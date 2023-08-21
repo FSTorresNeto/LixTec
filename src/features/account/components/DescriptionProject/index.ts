@@ -1,0 +1,1 @@
+export { DescriptionProject } from './DescriptionProject';

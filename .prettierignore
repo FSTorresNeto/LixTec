@@ -1,0 +1,6 @@
+build
+/app
+
+**/*.svg
+**/*.png
+**/*.jpg

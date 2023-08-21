@@ -1,0 +1,27 @@
+{
+  "short_name": "LixTec",
+  "name": "LixTec",
+  "start_url": "/",
+  "orientation": "portrait",
+  "display": "standalone",
+  "theme_color": "#323751",
+  "background_color": "#323751",
+  "icons": [
+    {
+      "src": "favicon.ico",
+      "sizes": "72x72 64x64 32x32 24x24 16x16",
+      "type": "image/x-icon",
+      "purpose": "maskable"
+    },
+    {
+      "src": "logo192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "logo512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ]
+}

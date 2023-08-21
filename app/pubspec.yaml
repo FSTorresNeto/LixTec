@@ -1,0 +1,32 @@
+name: lixTec
+description: A new Flutter project.
+
+publish_to: "none"
+
+version: 0.0.0
+
+environment:
+  sdk: ">=2.16.0 <3.0.0"
+
+dependencies:
+  cupertino_icons: ^1.0.4
+  dio: ^4.0.4
+  flutter:
+    sdk: flutter
+  flutter_inappwebview: ^5.3.2
+  jaguar_jwt: ^3.0.0
+  path_provider: ^2.0.8
+  url_launcher: ^6.0.20
+
+dev_dependencies:
+  flutter_launcher_icons: ^0.9.2
+  flutter_test:
+    sdk: flutter
+
+flutter_icons:
+  ios: true
+  android: true
+  image_path: "assets/icon/app_icon.png"
+
+flutter:
+  uses-material-design: true

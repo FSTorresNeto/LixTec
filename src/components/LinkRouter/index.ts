@@ -1,0 +1,1 @@
+export { LinkRouter } from './LinkRouter';
