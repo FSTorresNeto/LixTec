@@ -31,44 +31,29 @@ export const TermsView: React.FC<ITermsViewProps> = ({
 
         <Box>
           <Typography className={style.textField}>
-            {/* TODO: Criar termos de uso */}
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique
-            unde fugit veniam eius, perspiciatis sunt? Corporis qui ducimus
-            quibusdam, aliquam dolore excepturi quae. Distinctio enim at
-            eligendi perferendis in cum quibusdam sed quae, accusantium et
-            aperiam? Quod itaque exercitationem, at ab sequi qui modi delectus
-            quia corrupti alias distinctio nostrum. Minima ex dolor modi
-            inventore sapiente necessitatibus aliquam fuga et. Sed numquam
-            quibusdam at officia sapiente porro maxime corrupti perspiciatis
-            asperiores, exercitationem eius nostrum consequuntur iure aliquam
-            itaque, assumenda et! Quibusdam temporibus beatae doloremque
-            voluptatum doloribus soluta accusamus porro reprehenderit eos
-            inventore facere, fugit, molestiae ab officiis illo voluptates
-            recusandae. Vel dolor nobis eius, ratione atque soluta, aliquam
-            fugit qui iste architecto perspiciatis. Nobis, voluptatem! Cumque,
-            eligendi unde aliquid minus quis sit debitis obcaecati error,
-            delectus quo eius exercitationem tempore. Delectus sapiente,
-            provident corporis dolorum quibusdam aut beatae repellendus est
-            labore quisquam praesentium repudiandae non vel laboriosam quo ab
-            perferendis velit ipsa deleniti modi! Ipsam, illo quod. Nesciunt
-            commodi nihil corrupti cum non fugiat praesentium doloremque
-            architecto laborum aliquid. Quae, maxime recusandae? Eveniet dolore
-            molestiae dicta blanditiis est expedita eius debitis cupiditate
-            porro sed aspernatur quidem, repellat nihil quasi praesentium quia
-            eos, quibusdam provident. Incidunt tempore vel placeat voluptate
-            iure labore, repellendus beatae quia unde est aliquid dolor
-            molestias libero. Reiciendis similique exercitationem consequatur,
-            nobis placeat illo laudantium! Enim perferendis nulla soluta magni
-            error, provident repellat similique cupiditate ipsam, et tempore
-            cumque quod! Qui, iure suscipit tempora unde rerum autem saepe nisi
-            vel cupiditate iusto. Illum, corrupti? Fugiat quidem accusantium
-            nulla. Aliquid inventore commodi reprehenderit rerum reiciendis!
-            Quidem alias repudiandae eaque eveniet cumque nihil aliquam in
-            expedita, impedit quas ipsum nesciunt ipsa ullam consequuntur
-            dignissimos numquam at nisi porro a, quaerat rem repellendus.
-            Voluptates perspiciatis, in pariatur impedit, nam facilis libero
-            dolorem dolores sunt inventore perferendis, aut sapiente modi
-            nesciunt.
+            TERMOS DE USO DO APLICATIVO Bem-vindo ao aplicativo LixTec. Ao usar
+            este aplicativo, você concorda com os seguintes termos e condições
+            de uso. Se você não concordar com esses termos, por favor, não use o
+            aplicativo. 1. Informações Coletadas O aplicativo LixTec coleta as
+            seguintes informações do usuário: Nome, Telefone, Email, Dados de
+            Depósito. 2. Compartilhamento de Informações O aplicativo LixTec
+            poderá compartilhar suas informações apenas nas seguintes
+            circunstâncias: apresentação em percentual de dados de clientes para
+            apresentação de dados para a UFC. 3. Segurança das Informações
+            Faremos todos os esforços razoáveis para garantir a segurança das
+            informações que você nos forneceu, de acordo com as melhores
+            práticas da indústria. 4. Consentimento Ao usar o Aplicativo, você
+            concorda com a coleta, uso e compartilhamento de suas informações
+            conforme descrito nestes Termos de Uso. 5. Alterações nos Termos de
+            Uso Podemos atualizar estes Termos de Uso periodicamente. Quaisquer
+            alterações significativas serão comunicadas a você por meio do
+            aplicativo ou por outros meios adequados. 6. Contato Se você tiver
+            alguma dúvida ou preocupação sobre estes Termos de Uso ou a coleta
+            de informações, entre em contato conosco pelo email
+            lixtec@gmail.com.br. Ao usar o aplicativo LixTec, você concorda em
+            cumprir estes Termos de Uso. O não cumprimento destes termos pode
+            resultar na suspensão ou encerramento de sua conta. Obrigado por
+            usar o nocco aplicativo!
           </Typography>
         </Box>
 
