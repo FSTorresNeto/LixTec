@@ -1,0 +1,60 @@
+name: lixtec
+description: A new Flutter project.
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.1.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.2
+
+  flutter_modular: ^5.0.3
+  get: ^4.6.6
+
+  google_sign_in: ^6.1.5
+  firebase_auth: ^4.10.1
+  firebase_core: ^2.17.0
+  cloud_firestore: ^4.11.0
+  flutter_svg: ^2.0.7
+  asuka: ^2.2.0
+  qr_code_scanner: ^1.0.1
+  permission_handler: ^11.0.1
+  flutter_native_splash: ^2.3.5
+  flutter_launcher_icons: ^0.13.1
+  google_maps_flutter: ^2.5.0
+  latlong2: ^0.9.0
+  http: ^0.13.6
+  fluttertoast: ^8.0.7
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^2.0.0
+
+flutter_native_splash:
+  color: '#A7C957'
+  image: 'assets/icons/splash.png'
+  android: true
+  ios: true
+
+flutter_icons:
+  image_path: 'assets/icons/app_icon.png'
+  ios: true
+  remove_alpha_ios: true
+  android: 'launcher_icon'
+  adaptive_icon_background: '#FFFF'
+  adaptive_icon_foreground: 'assets/icons/app_icon.png'
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/icons/
+    - assets/images/
+    - assets/fonts/

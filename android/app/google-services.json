@@ -1,0 +1,48 @@
+{
+	"project_info": {
+		"project_number": "632471338459",
+		"firebase_url": "https://lixtec-dac2e-default-rtdb.firebaseio.com",
+		"project_id": "lixtec-dac2e",
+		"storage_bucket": "lixtec-dac2e.appspot.com"
+	},
+	"client": [
+		{
+			"client_info": {
+				"mobilesdk_app_id": "1:632471338459:android:f84c9c2b010eca1a633bfe",
+				"android_client_info": {
+					"package_name": "com.sn.lixtec"
+				}
+			},
+			"oauth_client": [
+				{
+					"client_id": "632471338459-7ja9au7rcu0ks674kq03h8aca2f0va1j.apps.googleusercontent.com",
+					"client_type": 1,
+					"android_info": {
+						"package_name": "com.sn.lixtec",
+						"certificate_hash": "04bb79f3026b8b9824a238af63bfe835d64ee753"
+					}
+				},
+				{
+					"client_id": "632471338459-bh2lv4uqmv3rui3vmp11qv7v734ghdde.apps.googleusercontent.com",
+					"client_type": 3
+				}
+			],
+			"api_key": [
+				{
+					"current_key": "AIzaSyA_mnDI7xDHOXB4YM64AG1t99B-OCbRSRk"
+				}
+			],
+			"services": {
+				"appinvite_service": {
+					"other_platform_oauth_client": [
+						{
+							"client_id": "632471338459-bh2lv4uqmv3rui3vmp11qv7v734ghdde.apps.googleusercontent.com",
+							"client_type": 3
+						}
+					]
+				}
+			}
+		}
+	],
+	"configuration_version": "1"
+}

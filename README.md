@@ -1,1 +1,3 @@
-# LixTec-Front
+# lixtec
+
+A new Flutter project.

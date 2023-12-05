@@ -1,1 +1,0 @@
-export { DescriptionProject } from './DescriptionProject';
