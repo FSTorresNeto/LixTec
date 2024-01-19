@@ -50,11 +50,20 @@ android {
         versionName flutterVersionName
     }
 
-    buildTypes {
+    signingConfigs {
         release {
-            signingConfig signingConfigs.debug
+            storeFile file('./keys.keystore')
+            keyAlias 'minha_alias'
+            storePassword 'tk123!dd'
+            keyPassword 'tk123!dd'
         }
     }
+
+    buildTypes {
+        release {
+            signingConfig signingConfigs.release
+        }
+    }   
 }
 
 flutter {
