@@ -12,9 +12,14 @@ import 'package:lixtec/app/presentation/shared/widgets/custom_loading_popup.dart
 import 'package:lixtec/app/presentation/shared/widgets/custom_rich_text.dart';
 import 'package:lixtec/app/presentation/shared/widgets/custom_text_form_field.dart';
 
-class RegisterPage extends StatelessWidget {
-  RegisterPage({super.key});
+class RegisterPage extends StatefulWidget {
+  RegisterPage({Key? key}) : super(key: key);
 
+  @override
+  _RegisterPageState createState() => _RegisterPageState();
+}
+
+class _RegisterPageState extends State<RegisterPage> {
   final AuthState authState = Modular.get<AuthState>();
 
   final _formKey = GlobalKey<FormState>();
@@ -22,6 +27,21 @@ class RegisterPage extends StatelessWidget {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+
+  String email = '';
+  String password = '';
+  String name = '';
+  bool _isButtonEnabled = false;
+
+  void updateButtonEnabled() {
+    if (password.length >= 7 && email.isNotEmpty && name.isNotEmpty) {
+      _isButtonEnabled = true;
+    } else {
+      _isButtonEnabled = false;
+    }
+
+    setState(() {});
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -56,6 +76,12 @@ class RegisterPage extends StatelessWidget {
                             prefixIcon: Icons.email,
                             controller: _emailController,
                             validator: emailValidator,
+                            onChanged: (text) {
+                              email = _emailController.text;
+                              name = _nameController.text;
+                              password = _passwordController.text;
+                              updateButtonEnabled();
+                            },
                           ),
                           const SizedBox(height: 10),
                           CustomTextFormField(
@@ -63,6 +89,12 @@ class RegisterPage extends StatelessWidget {
                             prefixIcon: Icons.person,
                             controller: _nameController,
                             validator: nameValidator,
+                            onChanged: (text) {
+                              email = _emailController.text;
+                              name = _nameController.text;
+                              password = _passwordController.text;
+                              updateButtonEnabled();
+                            },
                           ),
                           const SizedBox(height: 10),
                           CustomTextFormField(
@@ -71,6 +103,12 @@ class RegisterPage extends StatelessWidget {
                             isSecret: true,
                             controller: _passwordController,
                             validator: passwordValidator,
+                            onChanged: (text) {
+                              email = _emailController.text;
+                              name = _nameController.text;
+                              password = _passwordController.text;
+                              updateButtonEnabled();
+                            },
                           ),
                           const SizedBox(height: 30),
                           GestureDetector(
@@ -96,9 +134,7 @@ class RegisterPage extends StatelessWidget {
                                   );
                                 }
                               },
-                              isEnabled: _emailController.text.isNotEmpty &&
-                                  _nameController.text.isNotEmpty &&
-                                  _passwordController.text.isNotEmpty),
+                              isEnabled: _isButtonEnabled),
                           const SizedBox(height: 20),
                           enterWith(context),
                           const SizedBox(height: 10),

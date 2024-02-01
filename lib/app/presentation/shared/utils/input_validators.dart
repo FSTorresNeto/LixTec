@@ -45,3 +45,23 @@ String? passwordValidator(password) {
 
   return null;
 }
+
+bool formOnboardingValidator(password, email, name) {
+  if (password == null || password.isEmpty) {
+    return false;
+  }
+
+  if (email == null || email.isEmpty) {
+    return false;
+  }
+
+  if (name == null || name.isEmpty) {
+    return false;
+  }
+
+  if (password.length <= 7) {
+    return false;
+  }
+
+  return true;
+}

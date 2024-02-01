@@ -12,15 +12,33 @@ import 'package:lixtec/app/presentation/shared/widgets/custom_loading_popup.dart
 import 'package:lixtec/app/presentation/shared/widgets/custom_rich_text.dart';
 import 'package:lixtec/app/presentation/shared/widgets/custom_text_form_field.dart';
 
-class LoginPage extends StatelessWidget {
-  LoginPage({super.key});
+class LoginPage extends StatefulWidget {
+  LoginPage({Key? key}) : super(key: key);
 
+  @override
+  _LoginPageState createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
   final _formKey = GlobalKey<FormState>();
 
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
 
   final AuthState authState = Modular.get<AuthState>();
+  String email = '';
+  String password = '';
+  bool _isButtonEnabled = false;
+
+  void updateButtonEnabled() {
+    if (password.length >= 7 && email.isNotEmpty) {
+      _isButtonEnabled = true;
+    } else {
+      _isButtonEnabled = false;
+    }
+
+    setState(() {});
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -55,6 +73,11 @@ class LoginPage extends StatelessWidget {
                             prefixIcon: Icons.email,
                             controller: _emailController,
                             validator: emailValidator,
+                            onChanged: (text) {
+                              email = _emailController.text;
+                              password = _passwordController.text;
+                              updateButtonEnabled();
+                            },
                           ),
                           const SizedBox(height: 10),
                           CustomTextFormField(
@@ -63,6 +86,11 @@ class LoginPage extends StatelessWidget {
                             isSecret: true,
                             controller: _passwordController,
                             validator: passwordValidator,
+                            onChanged: (text) {
+                              email = _emailController.text;
+                              password = _passwordController.text;
+                              updateButtonEnabled();
+                            },
                           ),
                           const SizedBox(height: 30),
                           CustomElevatedButton(
@@ -77,8 +105,7 @@ class LoginPage extends StatelessWidget {
                                 );
                               }
                             },
-                            isEnabled: _emailController.text.isNotEmpty &&
-                                _passwordController.text.isNotEmpty,
+                            isEnabled: _isButtonEnabled,
                           ),
                           const SizedBox(height: 20),
                           Text(

@@ -14,6 +14,7 @@ class CustomTextFormField extends StatelessWidget {
     this.isSecret = false,
     this.controller,
     this.validator,
+    this.onChanged,
   });
 
   final String hintText;
@@ -22,6 +23,7 @@ class CustomTextFormField extends StatelessWidget {
   final bool isSecret;
   final TextEditingController? controller;
   final String? Function(String?)? validator;
+  final ValueChanged<String>? onChanged;
 
   final AuthState authState = Modular.get<AuthState>();
 
@@ -30,6 +32,7 @@ class CustomTextFormField extends StatelessWidget {
     return Obx(
       () => SizedBox(
         child: TextFormField(
+          onChanged: onChanged,
           obscureText: authState.showPassword.value && isSecret,
           controller: controller,
           validator: validator,
