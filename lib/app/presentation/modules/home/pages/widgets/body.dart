@@ -20,19 +20,29 @@ class BodyComponent extends StatelessWidget {
     switch (selectedIndex) {
       case 0:
         return Column(
-          mainAxisAlignment: MainAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             const Align(
               alignment: Alignment.topCenter,
               child: Padding(
-                padding:
-                    EdgeInsets.only(top: 20.0), // Ajuste conforme necessário
+                padding: EdgeInsets.only(top: 20.0),
                 child: Text(
                   'Seja bem-vindo',
                   style: TextStyle(
                     color: Colors.white,
-                    // Adicione outros estilos de texto conforme necessário
                   ),
+                ),
+              ),
+            ),
+            const Padding(
+              padding: EdgeInsets.symmetric(vertical: 20.0),
+              child: Text(
+                'Nesta tela, você pode encontrar tutoriais sobre diferentes recursos do aplicativo. '
+                'Escolha uma opção abaixo para aprender mais:',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 16.0,
+                  color: Colors.white,
                 ),
               ),
             ),
@@ -41,30 +51,36 @@ class BodyComponent extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  TutorialButton(
-                    buttonText: 'Sobre o Ranking',
-                    onPressed: () {
-                      // Navigate to Tutorial 1
-                      rankingTutorial(context);
-                    },
+                  Container(
+                    margin: const EdgeInsets.symmetric(vertical: 10.0),
+                    child: TutorialButton(
+                      buttonText: 'Sobre o Ranking',
+                      onPressed: () {
+                        rankingTutorial(context);
+                      },
+                    ),
                   ),
-                  TutorialButton(
-                    buttonText: 'Sobre o QrCode',
-                    onPressed: () {
-                      // Navigate to Tutorial 2
-                      qrCodeTutorial(context);
-                    },
+                  Container(
+                    margin: const EdgeInsets.symmetric(vertical: 10.0),
+                    child: TutorialButton(
+                      buttonText: 'Sobre o QrCode',
+                      onPressed: () {
+                        qrCodeTutorial(context);
+                      },
+                    ),
                   ),
-                  TutorialButton(
-                    buttonText: 'Sobre as Listas de Lixeiras',
-                    onPressed: () {
-                      // Navigate to Tutorial 3
-                      trashListTutorial(context);
-                    },
+                  Container(
+                    margin: const EdgeInsets.symmetric(vertical: 10.0),
+                    child: TutorialButton(
+                      buttonText: 'Sobre as Listas de Lixeiras',
+                      onPressed: () {
+                        trashListTutorial(context);
+                      },
+                    ),
                   ),
                 ],
               ),
-            ),
+            )
           ],
         );
       case 1:
@@ -335,11 +351,11 @@ void rankingTutorial(BuildContext context) {
             'A medida que você escaneia os QrCodes é realizado o acrécimo de acordo com o valor colocado no seu Ranking.',
         iconInfoList: [
           IconInfo(
-            icon: Icons.star, // Troque pelo ícone desejado
+            icon: Icons.star,
             textBelowIcon: '',
           ),
-          // Adicione mais objetos IconInfo para ícones adicionais
         ],
+        imagePath: 'assets/tutorial/ranking.png',
       ),
     ),
   );
@@ -355,11 +371,11 @@ void qrCodeTutorial(BuildContext context) {
             'Ao usar o Scanner pela balança para contabilizar os quilos pesados para o seu Ranking, esses QrCodes podem são gerados por uma balança que irá pesar o lixo eletrônico.',
         iconInfoList: [
           IconInfo(
-            icon: Icons.qr_code_scanner, // Troque pelo ícone desejado
+            icon: Icons.qr_code_scanner,
             textBelowIcon: '',
           ),
-          // Adicione mais objetos IconInfo para ícones adicionais
         ],
+        imagePath: 'assets/tutorial/QrCodeExample.png',
       ),
     ),
   );
@@ -372,15 +388,14 @@ void trashListTutorial(BuildContext context) {
       builder: (context) => TutorialScreen(
         title: 'Listagem de lixeiras',
         content:
-            'Aqui temos uma lista das lixeiras da cidade onde podemos ter sua localização por meio do google maps, cada endereço é registrado pelo adiministrador do projeto',
-        // Add image asset for Funcionalidade 3        iconInfoList: [
+            'Aqui temos uma lista das lixeiras da cidade onde podemos ter sua localização por meio do Google Maps. Cada endereço é registrado pelo administrador do projeto.',
         iconInfoList: [
           IconInfo(
-            icon: Icons.star, // Troque pelo ícone desejado
+            icon: Icons.star,
             textBelowIcon: '',
           ),
-          // Adicione mais objetos IconInfo para ícones adicionais
         ],
+        imagePath: 'assets/tutorial/trashList.png',
       ),
     ),
   );
@@ -415,11 +430,13 @@ class TutorialScreen extends StatelessWidget {
   final String title;
   final String content;
   final List<IconInfo> iconInfoList;
+  final String imagePath;
 
   TutorialScreen({
     required this.title,
     required this.content,
     required this.iconInfoList,
+    required this.imagePath,
   });
   @override
   Widget build(BuildContext context) {
@@ -445,9 +462,13 @@ class TutorialScreen extends StatelessWidget {
                           Icon(
                             iconInfo.icon,
                             color: AppColors.whiteColor,
-                            size: 50.0, // Ajuste o tamanho conforme necessário
+                            size: 50.0,
                           ),
                           const SizedBox(height: 10.0),
+                          Image(
+                            image: AssetImage(imagePath),
+                            fit: BoxFit.cover,
+                          ),
                         ],
                       ))
                   .toList(),
