@@ -34,7 +34,7 @@ class _RegisterPageState extends State<RegisterPage> {
   bool _isButtonEnabled = false;
 
   void updateButtonEnabled() {
-    if (password.length >= 7 && email.isNotEmpty && name.isNotEmpty) {
+    if (password.length >= 8 && email.isNotEmpty && name.isNotEmpty) {
       _isButtonEnabled = true;
     } else {
       _isButtonEnabled = false;

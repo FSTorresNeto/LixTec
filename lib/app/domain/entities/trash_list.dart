@@ -5,6 +5,8 @@ class TrashListEntity {
   final String city;
   final String country;
   final String complement;
+  final double latitude;
+  final double longitude;
 
   TrashListEntity({
     this.street = "",
@@ -13,6 +15,8 @@ class TrashListEntity {
     this.city = "",
     this.country = "",
     this.complement = "",
+    this.latitude = 0,
+    this.longitude = 0,
   });
 
   Map<String, dynamic> toDocument() {
@@ -23,6 +27,8 @@ class TrashListEntity {
       "city": city,
       "country": country,
       "complement": complement,
+      "latitude": latitude,
+      "longitude": longitude,
     };
   }
 }

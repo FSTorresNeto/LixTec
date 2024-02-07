@@ -1,6 +1,3 @@
-import 'dart:convert';
-
-import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
@@ -12,6 +9,8 @@ class MapScreen extends StatefulWidget {
     required this.city,
     required this.state,
     required this.country,
+    required this.latitude,
+    required this.longitude,
   }) : super(key: key);
 
   final String street;
@@ -19,6 +18,8 @@ class MapScreen extends StatefulWidget {
   final String city;
   final String state;
   final String country;
+  final double latitude;
+  final double longitude;
 
   @override
   _MapScreenState createState() => _MapScreenState();
@@ -34,17 +35,11 @@ class _MapScreenState extends State<MapScreen> {
   }
 
   Future<void> _loadTargetLocation() async {
-    final coordinates = await getCoordinatesFromAddress(
-      widget.street,
-      widget.number,
-      widget.city,
-      widget.state,
-      widget.country,
-    );
-
-    if (coordinates != null) {
+    if (widget.latitude != 0 && widget.longitude != 0) {
+      print(widget.latitude);
+      print(widget.longitude);
       setState(() {
-        _targetLocation = coordinates;
+        _targetLocation = LatLng(widget.latitude, widget.longitude);
       });
     }
   }
@@ -70,29 +65,19 @@ class _MapScreenState extends State<MapScreen> {
                     title: "Localização",
                   ),
                 ),
+                Marker(
+                  markerId: const MarkerId("2"),
+                  position: LatLng(widget.latitude, widget.longitude),
+                  infoWindow: const InfoWindow(
+                    title: "Lixeira",
+                  ),
+                  icon: BitmapDescriptor.defaultMarkerWithHue(
+                    BitmapDescriptor.hueRed,
+                  ),
+                ),
               }
             : {},
       ),
     );
-  }
-
-  Future<LatLng?> getCoordinatesFromAddress(String street, String number,
-      String city, String state, String country) async {
-    const apiKey = 'AIzaSyA_6cK3u2Mx7mGKpG_E9Bzc2esRzn8DhUI';
-    final address = '$street $number, $city, $state, $country';
-    final response = await http.get(Uri.parse(
-        'https://maps.googleapis.com/maps/api/geocode/json?address=$address&key=$apiKey'));
-
-    if (response.statusCode == 200) {
-      final data = json.decode(response.body);
-      if (data['status'] == 'OK' &&
-          data['results'] is List &&
-          data['results'].isNotEmpty) {
-        final location = data['results'][0]['geometry']['location'];
-
-        return LatLng(location['lat'], location['lng']);
-      }
-    }
-    return null;
   }
 }

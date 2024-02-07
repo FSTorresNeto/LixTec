@@ -46,7 +46,7 @@ class BodyComponent extends StatelessWidget {
                 ),
               ),
             ),
-            const SizedBox(height: 200.0),
+            const SizedBox(height: 10.0),
             Center(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -102,6 +102,13 @@ class BodyComponent extends StatelessWidget {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
+                    Text(
+                      'Valor total de depósitos em Kg:',
+                      style: AppTextStyles.textTheme.bodySmall!.apply(
+                        color: AppColors.whiteColor,
+                      ),
+                    ),
+                    const SizedBox(height: 30.0),
                     SizedBox(
                       height: 100.0,
                       width: 100.0,
@@ -115,7 +122,7 @@ class BodyComponent extends StatelessWidget {
                     const SizedBox(height: 10.0),
                     Text(
                       depositsTotalValue > 0
-                          ? '${depositsTotalValue} KG'
+                          ? '$depositsTotalValue KG'
                           : 'Valor inexistente',
                       style: AppTextStyles.textTheme.bodySmall!.apply(
                         color: AppColors.whiteColor,
@@ -194,7 +201,9 @@ class BodyComponent extends StatelessWidget {
                                           number: item.number,
                                           state: item.state,
                                           city: item.city,
-                                          country: 'Brasil',
+                                          country: item.country,
+                                          latitude: item.latitude,
+                                          longitude: item.longitude,
                                         ),
                                       ),
                                     );
@@ -292,6 +301,8 @@ class BodyComponent extends StatelessWidget {
           city: doc['city'],
           country: doc['country'],
           complement: doc['complement'],
+          longitude: doc['longitude'],
+          latitude: doc['latitude'],
         );
       }).toList();
     } catch (e) {
@@ -438,6 +449,7 @@ class TutorialScreen extends StatelessWidget {
     required this.iconInfoList,
     required this.imagePath,
   });
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -451,28 +463,10 @@ class TutorialScreen extends StatelessWidget {
         ),
       ),
       body: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: EdgeInsets.all(16.0),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Column(
-              children: iconInfoList
-                  .map((iconInfo) => Column(
-                        children: [
-                          Icon(
-                            iconInfo.icon,
-                            color: AppColors.whiteColor,
-                            size: 50.0,
-                          ),
-                          const SizedBox(height: 10.0),
-                          Image(
-                            image: AssetImage(imagePath),
-                            fit: BoxFit.cover,
-                          ),
-                        ],
-                      ))
-                  .toList(),
-            ),
             Text(
               content,
               style: AppTextStyles.textTheme.bodyLarge!.apply(
@@ -480,12 +474,11 @@ class TutorialScreen extends StatelessWidget {
               ),
               textAlign: TextAlign.justify,
             ),
-            const SizedBox(height: 10.0),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.pop(context);
-              },
-              child: const Text('Voltar'),
+            SizedBox(height: 16.0),
+            Container(
+              width: 400.0,
+              height: 400.0,
+              child: Image.asset(imagePath),
             ),
           ],
         ),
