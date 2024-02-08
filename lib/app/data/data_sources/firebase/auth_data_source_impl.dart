@@ -22,38 +22,48 @@ class AuthDataSourceImpl implements AuthDataSource {
     try {
       final googleUser = await googleSignin.signIn();
       final googleAuth = await googleUser?.authentication;
+
+      print(googleUser.toString());
+      print(googleAuth.toString());
+      if (googleAuth == null) {
+        throw 'Falha na autenticação do Google';
+      }
+
       final credential = GoogleAuthProvider.credential(
-        accessToken: googleAuth?.accessToken,
-        idToken: googleAuth?.idToken,
+        accessToken: googleAuth.accessToken,
+        idToken: googleAuth.idToken,
       );
 
       final userAuth =
           (await firebaseAuth.signInWithCredential(credential)).user;
+      if (userAuth == null) {
+        throw 'Falha na autenticação do usuário';
+      }
 
       final userCollection = fireStore.collection("users");
       final uid = firebaseAuth.currentUser!.uid;
 
-      userCollection.doc(uid).get().then((userDoc) async {
-        if (!userDoc.exists) {
-          var user = UserEntity(
-            uid: userAuth!.uid,
-            name: userAuth.displayName!,
-            email: userAuth.email!,
-            profileUrl: userAuth.photoURL == null ? "" : userAuth.photoURL!,
-          ).toDocument();
+      final userDoc = await userCollection.doc(uid).get();
+      if (!userDoc.exists) {
+        var user = UserEntity(
+          uid: userAuth.uid,
+          name: userAuth.displayName ?? "",
+          email: userAuth.email ?? "",
+          profileUrl: userAuth.photoURL ?? "",
+        ).toDocument();
 
-          userCollection.doc(uid).set(user);
-        }
-      }).catchError((error) {});
+        await userCollection.doc(uid).set(user);
+      }
 
       return UserEntity(
-        uid: userAuth!.uid,
-        name: userAuth.displayName!,
-        email: userAuth.email!,
-        profileUrl: userAuth.photoURL!,
+        uid: userAuth.uid,
+        name: userAuth.displayName ?? "",
+        email: userAuth.email ?? "",
+        profileUrl: userAuth.photoURL ?? "",
       );
     } catch (e) {
       log(e.toString());
+      print(e.toString());
       throw 'Erro ao autenticar com o Google';
     }
   }

@@ -83,13 +83,8 @@ class AuthState extends GetxController {
       loading.value = true;
       final user = await _getCurrentUserUseCase.call();
 
-      if (user != null) {
-        loading.value = false;
-        Modular.to.navigate('/home/', arguments: user);
-      } else {
-        loading.value = false;
-        Modular.to.navigate('/onboarding');
-      }
+      loading.value = false;
+      Modular.to.navigate('/onboarding');
     } catch (e) {
       loading.value = false;
 
