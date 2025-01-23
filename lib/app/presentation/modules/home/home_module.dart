@@ -1,4 +1,7 @@
+// Package imports:
 import 'package:flutter_modular/flutter_modular.dart';
+
+// Project imports:
 import 'package:lixtec/app/presentation/modules/home/home_state.dart';
 import 'package:lixtec/app/presentation/modules/home/pages/home_page.dart';
 

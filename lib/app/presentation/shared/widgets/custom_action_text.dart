@@ -1,11 +1,14 @@
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Project imports:
 import 'package:lixtec/app/presentation/shared/theme/app_colors.dart';
 import 'package:lixtec/app/presentation/shared/theme/app_text_style.dart';
 
-Widget richText(
+Widget ActionText(
   BuildContext context, {
   required String prefixText,
-  required String sufixText,
+  required String actionText,
 }) {
   return RichText(
     textAlign: TextAlign.center,
@@ -18,7 +21,7 @@ Widget richText(
           ),
         ),
         TextSpan(
-          text: sufixText,
+          text: actionText,
           style: AppTextStyles.textTheme.labelMedium!.apply(
             color: AppColors.linkColor,
           ),

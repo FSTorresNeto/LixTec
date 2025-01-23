@@ -1,8 +1,11 @@
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Project imports:
 import 'package:lixtec/app/presentation/shared/theme/app_colors.dart';
 import 'package:lixtec/app/presentation/shared/theme/app_text_style.dart';
 
-Widget enterWith(BuildContext context) {
+Widget EnterWith(BuildContext context) {
   final size = MediaQuery.of(context).size;
 
   return Row(

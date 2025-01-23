@@ -1,8 +1,12 @@
+// Dart imports:
 import 'dart:developer';
 
+// Package imports:
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:google_sign_in/google_sign_in.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:google_sign_in/google_sign_in.dart';
+
+// Project imports:
 import 'package:lixtec/app/data/data_sources/firebase/auth_data_source.dart';
 import 'package:lixtec/app/domain/entities/user_entity.dart';
 
@@ -68,6 +72,7 @@ class AuthDataSourceImpl implements AuthDataSource {
     }
   }
 
+/* TODO: Duas chamadas iguais */
   @override
   Future<UserEntity> signUp(UserEntity userEntity) async {
     try {

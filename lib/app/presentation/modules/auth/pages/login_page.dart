@@ -1,15 +1,20 @@
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Package imports:
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
+
+// Project imports:
 import 'package:lixtec/app/presentation/modules/auth/auth_state.dart';
+import 'package:lixtec/app/presentation/modules/auth/pages/widgets/custom_elevated_button.dart';
 import 'package:lixtec/app/presentation/modules/auth/pages/widgets/enter_with.dart';
 import 'package:lixtec/app/presentation/shared/theme/app_colors.dart';
 import 'package:lixtec/app/presentation/shared/theme/app_text_style.dart';
 import 'package:lixtec/app/presentation/shared/utils/input_validators.dart';
+import 'package:lixtec/app/presentation/shared/widgets/custom_action_text.dart';
 import 'package:lixtec/app/presentation/shared/widgets/custom_arrow_back.dart';
-import 'package:lixtec/app/presentation/shared/widgets/custom_elevated_button.dart';
 import 'package:lixtec/app/presentation/shared/widgets/custom_loading_popup.dart';
-import 'package:lixtec/app/presentation/shared/widgets/custom_rich_text.dart';
 import 'package:lixtec/app/presentation/shared/widgets/custom_text_form_field.dart';
 
 class LoginPage extends StatefulWidget {
@@ -30,14 +35,13 @@ class _LoginPageState extends State<LoginPage> {
   String password = '';
   bool _isButtonEnabled = false;
 
+/* TODO: Mover para o app_state */
   void updateButtonEnabled() {
     if (password.length >= 8 && email.isNotEmpty) {
       _isButtonEnabled = true;
     } else {
       _isButtonEnabled = false;
     }
-
-    setState(() {});
   }
 
   @override
@@ -52,7 +56,7 @@ class _LoginPageState extends State<LoginPage> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  customArrowBack(),
+                  CustomArrowBack(),
                   Container(
                     margin: EdgeInsets.only(top: (mediaQuery.height / 5) - 100),
                     child: Form(
@@ -67,32 +71,42 @@ class _LoginPageState extends State<LoginPage> {
                               color: AppColors.whiteColor,
                             ),
                           ),
-                          const SizedBox(height: 30),
+                          SizedBox(height: 30),
                           CustomTextFormField(
                             hintText: "Digite seu e-mail",
                             prefixIcon: Icons.email,
                             controller: _emailController,
-                            validator: emailValidator,
+                            validator: (email) {
+                              var result = emailValidator(email);
+                              return result['isValid']
+                                  ? null
+                                  : result['message'];
+                            },
                             onChanged: (text) {
                               email = _emailController.text;
                               password = _passwordController.text;
                               updateButtonEnabled();
                             },
                           ),
-                          const SizedBox(height: 10),
+                          SizedBox(height: 10),
                           CustomTextFormField(
                             hintText: "Digite sua senha",
                             prefixIcon: Icons.lock,
                             isSecret: true,
                             controller: _passwordController,
-                            validator: passwordValidator,
+                            validator: (password) {
+                              var result = passwordValidator(password);
+                              return result['isValid']
+                                  ? null
+                                  : result['message'];
+                            },
                             onChanged: (text) {
                               email = _emailController.text;
                               password = _passwordController.text;
                               updateButtonEnabled();
                             },
                           ),
-                          const SizedBox(height: 30),
+                          SizedBox(height: 30),
                           CustomElevatedButton(
                             label: "Entrar",
                             onTap: () async {
@@ -107,7 +121,7 @@ class _LoginPageState extends State<LoginPage> {
                             },
                             isEnabled: _isButtonEnabled,
                           ),
-                          const SizedBox(height: 20),
+                          SizedBox(height: 20),
                           Text(
                             "Esqueceu sua senha?",
                             style: AppTextStyles.textTheme.labelSmall!.apply(
@@ -115,9 +129,9 @@ class _LoginPageState extends State<LoginPage> {
                             ),
                             textAlign: TextAlign.center,
                           ),
-                          const SizedBox(height: 30),
-                          enterWith(context),
-                          const SizedBox(height: 30),
+                          SizedBox(height: 30),
+                          EnterWith(context),
+                          SizedBox(height: 30),
                           CustomElevatedButton(
                             label: "Entrar com o google",
                             onTap: () async => await authState.googleSignIn(),
@@ -125,12 +139,12 @@ class _LoginPageState extends State<LoginPage> {
                             backgroundColor: AppColors.inputFillColor,
                             showGradient: false,
                           ),
-                          const SizedBox(height: 30),
+                          SizedBox(height: 30),
                           GestureDetector(
-                            child: richText(
+                            child: ActionText(
                               context,
-                              prefixText: "Não possui uma conta? ",
-                              sufixText: "Criar agora",
+                              prefixText: "Não possui uma conta?",
+                              actionText: "Criar agora",
                             ),
                             onTap: () => Modular.to.pushNamed('/register'),
                           ),

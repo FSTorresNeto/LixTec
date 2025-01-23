@@ -1,0 +1,7 @@
+sort_other_directives_alphabetically: true
+sort_directives_between_groups: true
+group_rules:
+  - 'dart:*'
+  - 'package:flutter'
+  - 'package:'
+  - 'relative'

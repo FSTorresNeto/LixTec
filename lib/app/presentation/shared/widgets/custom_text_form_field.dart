@@ -1,6 +1,11 @@
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Package imports:
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:get/get.dart';
+
+// Project imports:
 import 'package:lixtec/app/presentation/modules/auth/auth_state.dart';
 import 'package:lixtec/app/presentation/shared/theme/app_colors.dart';
 import 'package:lixtec/app/presentation/shared/theme/app_text_style.dart';

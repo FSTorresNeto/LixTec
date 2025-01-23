@@ -1,3 +1,4 @@
+// Project imports:
 import 'package:lixtec/app/domain/entities/user_entity.dart';
 
 abstract class AuthRepository {

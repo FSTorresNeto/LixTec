@@ -1,15 +1,20 @@
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Package imports:
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:get/get.dart';
+
+// Project imports:
 import 'package:lixtec/app/presentation/modules/auth/auth_state.dart';
+import 'package:lixtec/app/presentation/modules/auth/pages/widgets/custom_elevated_button.dart';
 import 'package:lixtec/app/presentation/modules/auth/pages/widgets/enter_with.dart';
 import 'package:lixtec/app/presentation/shared/theme/app_colors.dart';
 import 'package:lixtec/app/presentation/shared/theme/app_text_style.dart';
 import 'package:lixtec/app/presentation/shared/utils/input_validators.dart';
+import 'package:lixtec/app/presentation/shared/widgets/custom_action_text.dart';
 import 'package:lixtec/app/presentation/shared/widgets/custom_arrow_back.dart';
-import 'package:lixtec/app/presentation/shared/widgets/custom_elevated_button.dart';
 import 'package:lixtec/app/presentation/shared/widgets/custom_loading_popup.dart';
-import 'package:lixtec/app/presentation/shared/widgets/custom_rich_text.dart';
 import 'package:lixtec/app/presentation/shared/widgets/custom_text_form_field.dart';
 
 class RegisterPage extends StatefulWidget {
@@ -51,11 +56,11 @@ class _RegisterPageState extends State<RegisterPage> {
         children: [
           SingleChildScrollView(
             child: Padding(
-              padding: const EdgeInsets.all(15.0),
+              padding: EdgeInsets.all(15.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  customArrowBack(),
+                  CustomArrowBack(),
                   Container(
                     margin: EdgeInsets.only(top: (mediaQuery.height / 5) - 100),
                     child: Form(
@@ -70,12 +75,17 @@ class _RegisterPageState extends State<RegisterPage> {
                               color: AppColors.whiteColor,
                             ),
                           ),
-                          const SizedBox(height: 30),
+                          SizedBox(height: 30),
                           CustomTextFormField(
                             hintText: "Digite seu e-mail",
                             prefixIcon: Icons.email,
                             controller: _emailController,
-                            validator: emailValidator,
+                            validator: (email) {
+                              var result = emailValidator(email);
+                              return result['isValid']
+                                  ? null
+                                  : result['message'];
+                            },
                             onChanged: (text) {
                               email = _emailController.text;
                               name = _nameController.text;
@@ -83,12 +93,17 @@ class _RegisterPageState extends State<RegisterPage> {
                               updateButtonEnabled();
                             },
                           ),
-                          const SizedBox(height: 10),
+                          SizedBox(height: 10),
                           CustomTextFormField(
                             hintText: "Digite seu nome",
                             prefixIcon: Icons.person,
                             controller: _nameController,
-                            validator: nameValidator,
+                            validator: (name) {
+                              var result = nameValidator(name);
+                              return result['isValid']
+                                  ? null
+                                  : result['message'];
+                            },
                             onChanged: (text) {
                               email = _emailController.text;
                               name = _nameController.text;
@@ -96,13 +111,18 @@ class _RegisterPageState extends State<RegisterPage> {
                               updateButtonEnabled();
                             },
                           ),
-                          const SizedBox(height: 10),
+                          SizedBox(height: 10),
                           CustomTextFormField(
                             hintText: "Digite sua senha",
                             prefixIcon: Icons.lock,
                             isSecret: true,
                             controller: _passwordController,
-                            validator: passwordValidator,
+                            validator: (password) {
+                              var result = passwordValidator(password);
+                              return result['isValid']
+                                  ? null
+                                  : result['message'];
+                            },
                             onChanged: (text) {
                               email = _emailController.text;
                               name = _nameController.text;
@@ -110,17 +130,17 @@ class _RegisterPageState extends State<RegisterPage> {
                               updateButtonEnabled();
                             },
                           ),
-                          const SizedBox(height: 30),
+                          SizedBox(height: 30),
                           GestureDetector(
-                            child: richText(
+                            child: ActionText(
                               context,
                               prefixText:
                                   "Ao se registrar voce concorda com os termos: ",
-                              sufixText: "Ler termos de uso",
+                              actionText: "Ler termos de uso",
                             ),
                             onTap: () => Modular.to.pushNamed('/terms'),
                           ),
-                          const SizedBox(height: 20),
+                          SizedBox(height: 20),
                           CustomElevatedButton(
                               label: "Criar conta",
                               onTap: () async {
@@ -135,22 +155,22 @@ class _RegisterPageState extends State<RegisterPage> {
                                 }
                               },
                               isEnabled: _isButtonEnabled),
-                          const SizedBox(height: 20),
-                          enterWith(context),
-                          const SizedBox(height: 10),
+                          SizedBox(height: 20),
+                          EnterWith(context),
+                          SizedBox(height: 10),
                           CustomElevatedButton(
-                            label: "Entrar com o google",
+                            label: "Cadastrar com o google",
                             onTap: () async => await authState.googleSignIn(),
                             iconPath: "assets/icons/google_signin.png",
                             backgroundColor: AppColors.inputFillColor,
                             showGradient: false,
                           ),
-                          const SizedBox(height: 10),
+                          SizedBox(height: 10),
                           GestureDetector(
-                            child: richText(
+                            child: ActionText(
                               context,
                               prefixText: "Já possui uma conta? ",
-                              sufixText: "Entrar agora",
+                              actionText: "Entrar agora",
                             ),
                             onTap: () => Modular.to.pushNamed('/login'),
                           ),
@@ -164,10 +184,10 @@ class _RegisterPageState extends State<RegisterPage> {
           ),
           Obx(() {
             if (authState.loading.value) {
-              return const LoadPopUp();
+              return LoadPopUp();
             }
 
-            return const SizedBox.shrink();
+            return SizedBox.shrink();
           }),
         ],
       ),

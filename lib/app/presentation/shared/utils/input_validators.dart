@@ -1,65 +1,56 @@
-dynamic storagePassword = "";
-
-String? nameValidator(name) {
+Map<String, dynamic> nameValidator(String? name) {
   if (name == null || name.isEmpty) {
-    return "Digite seu nome";
+    return {'isValid': false, 'error': 'Digite seu nome'};
   }
 
   final names = name.split(' ');
 
-  if (names.length == 1) {
-    return 'Digite seu nome completo!';
-  }
+  if (names.length == 1)
+    return {'isValid': false, 'error': 'Digite seu nome completo!'};
 
-  if (name.length <= 7) {
-    return 'Nome muito pequeno!';
-  }
+  if (name.length <= 7)
+    return {'isValid': false, 'error': 'Nome muito pequeno!'};
 
-  return null;
+  return {'isValid': true, 'error': null};
 }
 
-String? emailValidator(email) {
+Map<String, dynamic> emailValidator(String? email) {
   if (email == null || email.isEmpty) {
-    return "Digite seu e-mail";
+    return {'isValid': false, 'error': 'Digite seu e-mail'};
   }
 
   final exp = RegExp(r"^([\w\.-_]+)(@+)([\w]+)((\.+\w{2,3}){1,2})$");
 
-  if (!exp.hasMatch(email ?? '')) {
-    return 'Email invalido!';
+  if (!exp.hasMatch(email)) {
+    return {'isValid': false, 'error': 'Email inválido!'};
   }
 
-  return null;
+  return {'isValid': true, 'error': null};
 }
 
-String? passwordValidator(password) {
+Map<String, dynamic> passwordValidator(String? password) {
   if (password == null || password.isEmpty) {
-    return "Digite sua senha";
+    return {'isValid': false, 'error': 'Digite sua senha'};
   }
 
   if (password.length <= 7) {
-    return "A senha deve ter pelo menos 8 caracteres";
+    return {
+      'isValid': false,
+      'error': 'A senha deve ter pelo menos 8 caracteres'
+    };
   }
 
-  storagePassword = password;
-
-  return null;
+  return {'isValid': true, 'error': null};
 }
 
-bool formOnboardingValidator(password, email, name) {
-  if (password == null || password.isEmpty) {
-    return false;
-  }
+bool formOnboardingValidator(String? password, String? email, String? name) {
+  final nameValidation = nameValidator(name);
+  final emailValidation = emailValidator(email);
+  final passwordValidation = passwordValidator(password);
 
-  if (email == null || email.isEmpty) {
-    return false;
-  }
-
-  if (name == null || name.isEmpty) {
-    return false;
-  }
-
-  if (password.length <= 7) {
+  if (!nameValidation['isValid'] ||
+      !emailValidation['isValid'] ||
+      !passwordValidation['isValid']) {
     return false;
   }
 

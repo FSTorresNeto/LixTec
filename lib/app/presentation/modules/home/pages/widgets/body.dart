@@ -1,12 +1,17 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Package imports:
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:permission_handler/permission_handler.dart';
+
+// Project imports:
 import 'package:lixtec/app/domain/entities/trash_list.dart';
 import 'package:lixtec/app/presentation/modules/home/map.dart';
 import 'package:lixtec/app/presentation/modules/home/pages/widgets/qr_code_scanner_screen.dart';
 import 'package:lixtec/app/presentation/shared/theme/app_colors.dart';
 import 'package:lixtec/app/presentation/shared/theme/app_text_style.dart';
-import 'package:permission_handler/permission_handler.dart';
 
 class BodyComponent extends StatelessWidget {
   BodyComponent({super.key, required this.selectedIndex, required this.userId});

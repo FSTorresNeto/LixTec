@@ -1,6 +1,11 @@
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Package imports:
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+
+// Project imports:
 import 'package:lixtec/app/domain/entities/feature_entity.dart';
 import 'package:lixtec/app/presentation/modules/home/home_state.dart';
 import 'package:lixtec/app/presentation/shared/theme/app_colors.dart';

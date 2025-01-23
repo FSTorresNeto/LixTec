@@ -1,6 +1,8 @@
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Project imports:
 import 'package:lixtec/app/domain/entities/user_entity.dart';
-import 'package:lixtec/app/presentation/modules/home/feature_state.dart';
 import 'package:lixtec/app/presentation/modules/home/home_state.dart';
 import 'package:lixtec/app/presentation/modules/home/pages/widgets/app_bar.dart';
 import 'package:lixtec/app/presentation/modules/home/pages/widgets/body.dart';
@@ -21,7 +23,6 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   int _selectedIndex = 0;
   final HomeState homeState = HomeState();
-  final FeatureState featureState = FeatureState();
 
   void _onItemTapped(int index) {
     setState(() {

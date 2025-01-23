@@ -1,20 +1,23 @@
-import 'package:flutter/material.dart';
+// Flutter imports:
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+
+// Project imports:
 import 'package:lixtec/app/presentation/shared/theme/app_colors.dart';
 import 'package:lixtec/app/presentation/shared/theme/app_text_style.dart';
 
 class AppTheme {
-  static const MaterialColor _primarySwatch = MaterialColor(0xFF5F28FF, {
-    50: Color(0xFF5F28FF),
-    100: Color(0xFF5F28FF),
-    200: Color(0xFF5F28FF),
-    300: Color(0xFF5F28FF),
-    400: Color(0xFF5F28FF),
-    500: Color(0xFF5F28FF),
-    600: Color(0xFF5F28FF),
-    700: Color(0xFF5F28FF),
-    800: Color(0xFF5F28FF),
-    900: Color(0xFF5F28FF),
+  static const MaterialColor _primarySwatch = MaterialColor(0xFFa7c957, {
+    50: Color(0xFFa7c957),
+    100: Color(0xFFa7c957),
+    200: Color(0xFFa7c957),
+    300: Color(0xFFa7c957),
+    400: Color(0xFFa7c957),
+    500: Color(0xFFa7c957),
+    600: Color(0xFFa7c957),
+    700: Color(0xFFa7c957),
+    800: Color(0xFFa7c957),
+    900: Color(0xFFa7c957),
   });
 
   static final ThemeData themeData = ThemeData(
