@@ -32,7 +32,7 @@ class AuthModule extends Module {
 
   @override
   final List<ModularRoute> routes = [
-    ChildRoute('/onboarding', child: (_, args) => OnboardingPage()),
+    ChildRoute('/', child: (_, args) => OnboardingPage()),
     ChildRoute('/register', child: (_, args) => RegisterPage()),
     ChildRoute('/login', child: (_, args) => LoginPage()),
     ChildRoute('/terms', child: (_, args) => TermsPage()),
