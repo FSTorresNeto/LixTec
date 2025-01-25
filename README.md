@@ -47,7 +47,7 @@ flutter pub get
 2. Configure o arquivo `android/app/build.gradle` para incluir a versão mínima do SDK:
 
 ```gradle
-minSdkVersion 21
+minSdkVersion 23
 targetSdkVersion 33
 ```
 
